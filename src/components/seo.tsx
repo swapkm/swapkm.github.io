@@ -48,7 +48,7 @@ export const SEO: React.FC<SEOProps> = ({
       <meta name="twitter:creator" content={seo.twitterUsername} />
 
       <meta property="og:locale" content="en_GB" />
-      <meta property="og:site_name" content={seo.title} />
+      <meta property="og:site_name" content={defaultTitle} />
       <meta property="og:title" content={title}></meta>
       <meta property="og:url" content={seo.url}></meta>
       <meta property="og:description" content={description}></meta>

@@ -2,12 +2,12 @@ import type { GatsbyConfig } from "gatsby";
 
 const config: GatsbyConfig = {
   siteMetadata: {
-    title: `SwapKam - Tech Insights`,
+    title: `SwapKam`,
     description: `Discover tech, gadgets, and more! Get reviews and stay updated on the latest innovations in technology at SwapKam. #Tech #Gadgets #AI.`,
     twitterUsername: `@swapkams`,
-    image: `/swapkam.svg`,
-    //siteUrl: `https://swapkam.com`,
-    siteUrl: `http://localhost:8000`,
+    image: `/images/logo.png`,
+    siteUrl: `https://swapkm.github.io`,
+    //siteUrl: `http://localhost:8000`,
   },
   graphqlTypegen: true,
   plugins: [

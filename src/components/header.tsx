@@ -13,7 +13,7 @@ const Header: React.FC<PageProps> = () => {
   return (
     <header className="bg-gray-900 text-white p-4">
       <div className="container mx-auto flex justify-between items-center">
-        <h1 className="text-2xl font-bold">
+        <h1 className="text-2xl font-bold text-white">
           <a href="/">SwapKam</a>
         </h1>
         <nav className="hidden md:block">

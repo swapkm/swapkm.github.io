@@ -68,9 +68,8 @@ const schema = {
       image: {
         "@type": "ImageObject",
         "@id": "https://swapkam.com/#logo",
-        url: "https://swapkam.com/wp-content/uploads/2023/09/swapkam.webp",
-        contentUrl:
-          "https://swapkam.com/wp-content/uploads/2023/09/swapkam.webp",
+        url: "https://swapkam.com/images/logo.png",
+        contentUrl: "https://swapkam.com/images/logo.png",
         caption: "SwapKam",
         inLanguage: "en-US",
         width: "512",
