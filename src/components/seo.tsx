@@ -1,11 +1,14 @@
 import React, { ReactNode } from "react";
 import { useSiteMetadata } from "../hooks/use-site-metadata";
-import favicon from "../images/swapkam.svg";
+import { favicon } from "../images/icon.svg";
 
 interface SEOProps {
   title?: string;
   description?: string;
   pathname?: string;
+  image?: string;
+  categories?: string;
+  type?: string;
   children?: ReactNode;
 }
 
@@ -13,25 +16,30 @@ export const SEO: React.FC<SEOProps> = ({
   title,
   description,
   pathname,
+  image: postImage,
+  categories,
+  type,
   children,
 }) => {
   const {
     title: defaultTitle,
     description: defaultDescription,
-    image,
     siteUrl,
     twitterUsername,
+    image: siteMetadataImage,
     imageAlt,
-    type,
   } = useSiteMetadata();
 
   const seo = {
     title: title || defaultTitle,
     description: description || defaultDescription,
-    image: `${siteUrl}${image}`,
+    image: postImage
+      ? `${siteUrl}${postImage}`
+      : `${siteUrl}${siteMetadataImage}`,
     url: `${siteUrl}${pathname || ``}`,
     twitterUsername,
     imageAlt,
+    categories,
     type,
   };
 
@@ -49,11 +57,14 @@ export const SEO: React.FC<SEOProps> = ({
 
       <meta property="og:locale" content="en_GB" />
       <meta property="og:site_name" content={defaultTitle} />
-      <meta property="og:title" content={title}></meta>
-      <meta property="og:url" content={seo.url}></meta>
-      <meta property="og:description" content={description}></meta>
-      <meta property="og:image" content={seo.image}></meta>
-      <meta property="og:image:alt" content={imageAlt}></meta>
+      <meta property="og:title" content={title} />
+      <meta property="og:url" content={seo.url} />
+      <meta property="og:description" content={description} />
+      <meta property="og:image" content={seo.image} />
+      <meta
+        property="og:image:alt"
+        content={imageAlt || title || defaultTitle}
+      />
       <meta property="og:type" content={type} />
       <link rel="icon" href={favicon} />
       {children}

@@ -24,29 +24,36 @@ const IndexPage: React.FC<PageProps> = ({ data, location }) => {
             const title = post.frontmatter.title || post.fields.slug;
 
             return (
-              <li key={post.frontmatter.slug}>
-                <article
-                  className="m-6"
-                  itemScope
-                  itemType="http://schema.org/Article"
+              <li key={post.frontmatter.slug} className="md:px-20">
+                <Link
+                  className="block rounded-3xl bg-pink-50 shadow-md hover:shadow-lg transition duration-300 p-2"
+                  to={post.frontmatter.slug}
                 >
-                  <Link to={post.frontmatter.slug} itemProp="url">
-                    <header>
-                      <h2>
-                        <span itemProp="headline">{title}</span>
-                      </h2>
-                      <small>{post.frontmatter.date}</small>
-                    </header>
-                    <section>
-                      <p
-                        dangerouslySetInnerHTML={{
-                          __html: post.frontmatter.description || post.excerpt,
-                        }}
-                        itemProp="description"
+                  <header>
+                    {post.frontmatter.image && (
+                      <img
+                        src={post.frontmatter.image}
+                        alt={post.frontmatter.title}
+                        style={{ maxWidth: "100%", height: "auto" }}
+                        className="block rounded-3xl"
                       />
-                    </section>
-                  </Link>
-                </article>
+                    )}
+                    <h2 className="text-2xl font-bold text-shadow m-5">
+                      <span>{title}</span>
+                    </h2>
+                    <small className="text-shadow mx-5 text-black">
+                      {post.frontmatter.date}
+                    </small>
+                  </header>
+                  <section>
+                    <p
+                      className="m-5 text-black"
+                      dangerouslySetInnerHTML={{
+                        __html: post.frontmatter.description || post.excerpt,
+                      }}
+                    />
+                  </section>
+                </Link>
               </li>
             );
           })}
@@ -62,19 +69,10 @@ const schema = {
   "@context": "https://schema.org",
   "@graph": [
     {
-      "@type": "Person",
-      "@id": "https://swapkam.com/#person",
-      name: "Swap Kam",
-      image: {
-        "@type": "ImageObject",
-        "@id": "https://swapkam.com/#logo",
-        url: "https://swapkam.com/images/logo.png",
-        contentUrl: "https://swapkam.com/images/logo.png",
-        caption: "SwapKam",
-        inLanguage: "en-US",
-        width: "512",
-        height: "512",
-      },
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      url: "https://swapkam.com/",
+      logo: "https://swapkam.com/images/logo.svg",
     },
     {
       "@type": "WebSite",
@@ -90,20 +88,11 @@ const schema = {
         "query-input": "required name=search_term_string",
       },
     },
-    {
-      "@type": "CollectionPage",
-      "@id": "https://swapkam.com/#webpage",
-      url: "https://swapkam.com/",
-      name: "SwapKam - Tech Insights",
-      about: { "@id": "https://swapkam.com/#person" },
-      isPartOf: { "@id": "https://swapkam.com/#website" },
-      inLanguage: "en-US",
-    },
   ],
 };
 
 export const Head = () => (
-  <SEO>
+  <SEO title="SwapKam - Tech Insides">
     <script type="application/ld+json">{JSON.stringify(schema)}</script>
   </SEO>
 );
@@ -123,6 +112,7 @@ export const pageQuery = graphql`
           title
           slug
           description
+          image
         }
       }
     }

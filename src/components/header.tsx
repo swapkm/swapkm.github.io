@@ -1,7 +1,9 @@
 import * as React from "react";
 import type { HeadFC, PageProps } from "gatsby";
+import { Link } from "gatsby";
 import Menu from "@mui/icons-material/Menu";
 import Close from "@mui/icons-material/Close";
+import logo from "../images/icon.svg";
 
 const Header: React.FC<PageProps> = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
@@ -11,50 +13,54 @@ const Header: React.FC<PageProps> = () => {
   };
 
   return (
-    <header className="bg-gray-900 text-white p-4">
-      <div className="container mx-auto flex justify-between items-center">
-        <h1 className="text-2xl font-bold text-white">
-          <a href="/">SwapKam</a>
-        </h1>
-        <nav className="hidden md:block">
-          <ul className="flex space-x-4">
-            <li>
-              <a href="/category/tech" className="hover:text-blue-400">
+    <header className="top-0 z-10 bg-white backdrop-filter backdrop-blur-lg bg-opacity-30 filter drop-shadow-md px-4 py-4 h-20 items-center">
+      <div className="max-w-5xl mx-auto px-4">
+        <div className="flex items-center justify-between h-16">
+          <Link to="/">
+            <img src={logo} alt="SwapKam" width="70" height="300" />
+          </Link>
+          <div className="hidden md:flex space-x-4 items-center">
+            <li className="list-none font-bold">
+              <Link to="/category/tech" className="text-black">
                 Tech
-              </a>
+              </Link>
             </li>
-            <li>
-              <a href="/category/gadgets" className="hover:text-blue-400">
+            <li className="list-none font-bold">
+              <Link to="/category/gadgets" className="text-black">
                 Gadgets
-              </a>
+              </Link>
             </li>
-            {/* Add more category links as needed */}
-          </ul>
-        </nav>
-        <div className="md:hidden">
-          <button
-            onClick={toggleMobileMenu}
-            className="text-white hover:text-blue-400 focus:outline-none"
-          >
-            {isMobileMenuOpen ? (
-              <span className="material-icons">
-                <Close />
-              </span>
-            ) : (
-              <span className="material-icons">
-                <Menu />
-              </span>
-            )}
-          </button>
+            <li className="list-none font-bold">
+              <Link to="/az" className="text-black">
+                AZ
+              </Link>
+            </li>
+          </div>
+          <div className="md:hidden">
+            <button
+              onClick={toggleMobileMenu}
+              className="hover:text-blue-400 focus:outline-none"
+            >
+              {isMobileMenuOpen ? (
+                <span className="material-icons">
+                  <Close />
+                </span>
+              ) : (
+                <span className="material-icons">
+                  <Menu />
+                </span>
+              )}
+            </button>
+          </div>
         </div>
       </div>
       {isMobileMenuOpen && (
         <div className="md:hidden">
-          <ul className="bg-gray-900 py-4">
+          <ul className="bg-white py-4">
             <li>
               <a
                 href="/category/tech"
-                className="block text-white px-4 py-2 hover:bg-blue-900"
+                className="block text-black px-4 py-2 hover:bg-pink-200"
               >
                 Tech
               </a>
@@ -62,7 +68,7 @@ const Header: React.FC<PageProps> = () => {
             <li>
               <a
                 href="/category/gadgets"
-                className="block text-white px-4 py-2 hover:bg-blue-900"
+                className="block text-black px-4 py-2 hover:bg-pink-200"
               >
                 Gadgets
               </a>

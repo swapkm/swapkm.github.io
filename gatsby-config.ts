@@ -1,11 +1,14 @@
 import type { GatsbyConfig } from "gatsby";
+require("dotenv").config({
+  path: `.env.${process.env.NODE_ENV}`,
+});
 
 const config: GatsbyConfig = {
   siteMetadata: {
     title: `SwapKam`,
     description: `Discover tech, gadgets, and more! Get reviews and stay updated on the latest innovations in technology at SwapKam. #Tech #Gadgets #AI.`,
     twitterUsername: `@swapkams`,
-    image: `/images/logo.png`,
+    image: `/images/icon.svg`,
     siteUrl: `https://swapkm.github.io`,
     //siteUrl: `http://localhost:8000`,
   },
@@ -43,7 +46,7 @@ const config: GatsbyConfig = {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `content`,
-        path: `${__dirname}/src/content`,
+        path: `${__dirname}/content`,
       },
     },
     {
@@ -120,6 +123,18 @@ const config: GatsbyConfig = {
           production: {
             policy: [{ userAgent: "*", allow: "/" }],
           },
+        },
+      },
+    },
+    {
+      resolve: `gatsby-plugin-google-gtag`,
+      options: {
+        trackingIds: [process.env.GA_ID],
+        pluginConfig: {
+          head: true,
+          respectDNT: true,
+          exclude: ["/preview/**", "/do-not-track/me/too/"],
+          delayOnRouteUpdate: 0,
         },
       },
     },

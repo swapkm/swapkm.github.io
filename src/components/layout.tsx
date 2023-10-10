@@ -11,7 +11,7 @@ export default function Layout({ children }: LayoutProps) {
   return (
     <MDXProvider>
       <Header />
-      <main className="min-h-screen container mx-auto p-4">{children}</main>
+      <main className="min-h-screen max-w-4xl mx-auto p-4">{children}</main>
       <Footer />
     </MDXProvider>
   );
