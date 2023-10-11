@@ -18,7 +18,7 @@ const IndexPage: React.FC<PageProps> = ({ data, location }) => {
   const posts = data.allMdx.nodes;
   return (
     <Layout>
-      <main>
+      <>
         <ol style={{ listStyle: `none` }}>
           {posts.map((post) => {
             const title = post.frontmatter.title || post.fields.slug;
@@ -29,7 +29,7 @@ const IndexPage: React.FC<PageProps> = ({ data, location }) => {
                   className="block rounded-3xl bg-pink-50 shadow-md hover:shadow-lg transition duration-300 p-2"
                   to={post.frontmatter.slug}
                 >
-                  <header>
+                  <div>
                     {post.frontmatter.image && (
                       <img
                         src={post.frontmatter.image}
@@ -44,21 +44,21 @@ const IndexPage: React.FC<PageProps> = ({ data, location }) => {
                     <small className="text-shadow mx-5 text-black">
                       {post.frontmatter.date}
                     </small>
-                  </header>
-                  <section>
+                  </div>
+                  <div>
                     <p
                       className="m-5 text-black"
                       dangerouslySetInnerHTML={{
                         __html: post.frontmatter.description || post.excerpt,
                       }}
                     />
-                  </section>
+                  </div>
                 </Link>
               </li>
             );
           })}
         </ol>
-      </main>
+      </>
     </Layout>
   );
 };

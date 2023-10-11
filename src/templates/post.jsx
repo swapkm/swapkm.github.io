@@ -56,11 +56,9 @@ export const Head = ({ data, location }) => (
               {
                 "@type": "ListItem",
                 position: 2,
-                name: "Science Fiction",
+                name: data.mdx.frontmatter.category,
                 item: {
-                  "@id":
-                    data.site.siteMetadata.siteUrl +
-                    data.mdx.frontmatter.category,
+                  "@id": `${data.site.siteMetadata.siteUrl}/${data.mdx.frontmatter.category}`,
                   name: data.mdx.frontmatter.category,
                 },
               },
@@ -123,7 +121,7 @@ export const Head = ({ data, location }) => (
               url: data.site.siteMetadata.siteUrl + data.mdx.frontmatter.image,
               contentUrl:
                 data.site.siteMetadata.siteUrl + data.mdx.frontmatter.image,
-              license: "https://swapkam.com/license",
+              license: `${data.site.siteMetadata.siteUrl}/images-license`,
               acquireLicensePage: `${data.site.siteMetadata.siteUrl}/how-to-use-images`,
               creditText: data.site.siteMetadata.title,
               creator: {
