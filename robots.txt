@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+Sitemap: https://swapkam.com/sitemap.xml
+Host: https://swapkam.com
