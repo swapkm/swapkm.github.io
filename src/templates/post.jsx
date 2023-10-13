@@ -15,9 +15,9 @@ export default function PageTemplate({ data, children }) {
           <section>
             <h1>{data.mdx.frontmatter.title}</h1>
             <div className="flex space-x-4">
-              <p>{data.mdx.frontmatter.date}</p>
+            <p>{new Date(data.mdx.frontmatter.date).toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' })}</p>
               <p>
-                <strong>{data.mdx.frontmatter.category}</strong>
+                <strong>{data.mdx.frontmatter.category.charAt(0).toUpperCase() + data.mdx.frontmatter.category.slice(1)}</strong>
               </p>
             </div>
           </section>

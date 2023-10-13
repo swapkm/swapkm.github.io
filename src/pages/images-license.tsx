@@ -71,5 +71,5 @@ export const Head = () => (
   <SEO
     title="Images License - SwapKam"
     description="We're allowing others to use and share the images from SwapKam while requiring attribution and not imposing additional restrictions on how you use the images."
-  />
+  ><meta name="robots" content="noindex"/></SEO>
 );

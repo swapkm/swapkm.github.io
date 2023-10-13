@@ -1,6 +1,6 @@
 import React, { ReactNode } from "react";
 import { useSiteMetadata } from "../hooks/use-site-metadata";
-import { favicon } from "../images/icon.svg";
+import favicon from "../images/icon.svg";
 
 interface SEOProps {
   title?: string;

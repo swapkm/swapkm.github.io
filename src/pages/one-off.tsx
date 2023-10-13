@@ -10,5 +10,6 @@ export default OneOffPage;
 export const Head = () => (
   <SEO title="One Off Page">
     <script type="application/ld+json">{JSON.stringify({})}</script>
+    <meta name="robots" content="noindex"/>
   </SEO>
 );
