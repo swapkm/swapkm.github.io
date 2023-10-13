@@ -1,7 +1,7 @@
 //./gatsby-node.js
 const path = require("path")
 const postTemplate = path.resolve(`./src/templates/post.jsx`)
-const categoryTemplate = path.resolve(`./src/templates/category.tsx`)
+const category = path.resolve(`./src/templates/category.tsx`)
 
 exports.createPages = async ({ graphql, actions, reporter }) => {
     const { createPage } = actions
