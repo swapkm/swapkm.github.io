@@ -17,7 +17,23 @@ const config: GatsbyConfig = {
     "gatsby-plugin-postcss",
     "gatsby-plugin-image",
     "gatsby-plugin-sitemap",
-    "gatsby-plugin-mdx",
+    //"gatsby-plugin-mdx",
+    {
+      resolve: 'gatsby-plugin-mdx',
+      options: {
+        gatsbyRemarkPlugins: [
+          {
+            resolve: `gatsby-remark-autolink-headers`,
+            options: {
+              className: 'toc-anchor',
+              icon: false,
+              maintainCase: false,
+              removeAccents: true,
+            },
+          },
+             ],
+        },
+    },
     "gatsby-plugin-sharp",
     "gatsby-transformer-sharp",
     {

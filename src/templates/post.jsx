@@ -1,13 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 import { graphql } from "gatsby";
 import { MDXProvider } from "@mdx-js/react";
 import { Link } from "gatsby";
 import Layout from "../components/layout";
 import { SEO } from "../components/seo";
+import FormatListBulleted from "@mui/icons-material/FormatListBulleted";
+import Close from "@mui/icons-material/Close";
 
 const shortcodes = { Link };
 
 export default function PageTemplate({ data, children }) {
+  const [showTOC, setShowTOC] = useState(false);
+
+  const toggleTOC = () => {
+    setShowTOC(!showTOC);
+  };
+
   return (
     <Layout>
       <MDXProvider components={shortcodes}>
@@ -15,11 +23,49 @@ export default function PageTemplate({ data, children }) {
           <section>
             <h1>{data.mdx.frontmatter.title}</h1>
             <div className="flex space-x-4">
-            <p>{new Date(data.mdx.frontmatter.date).toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' })}</p>
               <p>
-                <strong>{data.mdx.frontmatter.category.charAt(0).toUpperCase() + data.mdx.frontmatter.category.slice(1)}</strong>
+                {new Date(data.mdx.frontmatter.date).toLocaleDateString(
+                  undefined,
+                  { year: "numeric", month: "short", day: "numeric" }
+                )}
+              </p>
+              <p>
+                <strong>
+                  {data.mdx.frontmatter.category.charAt(0).toUpperCase() +
+                    data.mdx.frontmatter.category.slice(1)}
+                </strong>
               </p>
             </div>
+          </section>
+          <section className="bg-gray-100 p-4 my-4 rounded-lg">
+            <button
+              onClick={toggleTOC}
+              className="bg-gray-500 text-white px-4 py-2 rounded-sm hover:bg-blue-700"
+            >
+              {showTOC ? (
+                <>
+                  <Close /> Table of Contents
+                </>
+              ) : (
+                <>
+                  <FormatListBulleted /> Table of Contents
+                </>
+              )}
+            </button>
+            {showTOC && (
+              <div>
+                <h3 className="text-xl font-semibold">Table of Contents</h3>
+                <ul>
+                  {data.mdx.tableOfContents.items.map((item) => (
+                    <li key={item.url}>
+                      <a href={item.url}>
+                        <strong>{item.title}</strong>
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
           </section>
           {children}
         </article>
@@ -156,6 +202,7 @@ export const Head = ({ data, location }) => (
 export const query = graphql`
   query ($id: String!) {
     mdx(id: { eq: $id }) {
+      tableOfContents
       frontmatter {
         title
         description
