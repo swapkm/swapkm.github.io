@@ -13,12 +13,17 @@ const Header: React.FC<PageProps> = () => {
   };
 
   return (
-    <header className="top-0 z-10 bg-white backdrop-filter backdrop-blur-lg bg-opacity-30 filter drop-shadow-md px-4 py-4 h-20 items-center">
+    <header className="top-0 z-10 bg-white backdrop-filter backdrop-blur-lg bg-opacity-30 filter drop-shadow-md px-4 py-4 h-20 items-center sm:sticky">
       <div className="max-w-5xl mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           <Link to="/">
-            <img src={logo} alt="SwapKam" width="70" height="300" />
+            <img
+              src={logo}
+              alt="SwapKam"
+              className="w-14 h-14 md:w-16 md:h-16"
+            />
           </Link>
+
           <div className="hidden md:flex space-x-4 items-center">
             <li className="list-none font-bold">
               <Link to="/category/tech" className="text-black">
@@ -58,20 +63,22 @@ const Header: React.FC<PageProps> = () => {
         <div className="md:hidden">
           <ul className="bg-white py-4">
             <li>
-              <a
-                href="/category/tech"
-                className="block text-black px-4 py-2 hover:bg-pink-200"
-              >
+              <Link to="/category/tech" className="block text-black px-4 py-2">
                 Tech
-              </a>
+              </Link>
             </li>
             <li>
-              <a
-                href="/category/gadgets"
-                className="block text-black px-4 py-2 hover:bg-pink-200"
+              <Link
+                to="/category/gadgets"
+                className="block text-black px-4 py-2"
               >
                 Gadgets
-              </a>
+              </Link>
+            </li>
+            <li>
+              <Link to="/az" className="block text-black px-4 py-2">
+                AZ
+              </Link>
             </li>
             {/* Add more mobile menu items as needed */}
           </ul>

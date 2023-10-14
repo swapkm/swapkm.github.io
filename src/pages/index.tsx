@@ -42,7 +42,11 @@ const IndexPage: React.FC<PageProps> = ({ data, location }) => {
                       <span>{title}</span>
                     </h2>
                     <small className="text-shadow mx-5 text-black">
-                      {post.frontmatter.date}
+                      {post.frontmatter.date}, Tags: {post.frontmatter.tags.map((tag) => (
+                        <span key={tag} className="mr-2">
+                          {tag}
+                        </span>
+                      ))}
                     </small>
                   </div>
                   <div>
@@ -113,6 +117,7 @@ export const pageQuery = graphql`
           slug
           description
           image
+          tags
         }
       }
     }

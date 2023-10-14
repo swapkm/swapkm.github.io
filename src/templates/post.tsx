@@ -29,7 +29,7 @@ export default function PageTemplate({ data, children }) {
                   { year: "numeric", month: "short", day: "numeric" }
                 )}
               </p>
-              <p>
+              <p className="flex space-x-4">
                 <strong>
                   {data.mdx.frontmatter.category.charAt(0).toUpperCase() +
                     data.mdx.frontmatter.category.slice(1)}
@@ -68,6 +68,19 @@ export default function PageTemplate({ data, children }) {
             )}
           </section>
           {children}
+          <div className="bg-gray-100 my-4 rounded-lg">
+            <div className="flex space-x-4">
+            Tags: <strong>{data.mdx.frontmatter.tags.join(', ')}</strong>
+            </div>
+
+            <div className="flex space-x-4 mt-4">
+              {" "}
+              Author:
+              <Link to="/author/swapkam">
+                <strong>{data.mdx.frontmatter.author}</strong>
+              </Link>
+            </div>
+          </div>
         </article>
       </MDXProvider>
     </Layout>
@@ -208,6 +221,7 @@ export const query = graphql`
         description
         slug
         category
+        tags
         keywords
         date
         image

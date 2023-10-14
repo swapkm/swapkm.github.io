@@ -1,6 +1,6 @@
 //./src/templates/category.tsx
 import React from 'react';
-import { graphql, PageProps } from 'gatsby';
+import { graphql, Link, PageProps } from 'gatsby';
 import Layout from "../components/layout";
 import { SEO } from "../components/seo";
 
@@ -34,7 +34,7 @@ const Category: React.FC<CategoryProps> = ({ data, pageContext }) => {
       <ul>
         {posts.map(({ node }) => (
           <li key={node.id}>
-            <a href={node.frontmatter.slug}>{node.frontmatter.title}</a>
+            <Link to={node.frontmatter.slug}>{node.frontmatter.title}</Link>
           </li>
         ))}
       </ul>
