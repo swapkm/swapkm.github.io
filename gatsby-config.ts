@@ -9,7 +9,7 @@ const config: GatsbyConfig = {
     description: `Discover tech, gadgets, and more! Get reviews and stay updated on the latest innovations in technology at SwapKam. #Tech #Gadgets #AI.`,
     twitterUsername: `@swapkams`,
     image: `/images/icon.svg`,
-    siteUrl: `https://swapkm.github.io`,
+    siteUrl: `https://swapkam.com`,
     //siteUrl: `http://localhost:8000`,
   },
   graphqlTypegen: true,
